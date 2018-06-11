@@ -82,6 +82,16 @@ namespace Agenois.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] IFEODebugger {
+            get {
+                object obj = ResourceManager.GetObject("IFEODebugger", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Payloads {
             get {
                 object obj = ResourceManager.GetObject("Payloads", resourceCulture);
