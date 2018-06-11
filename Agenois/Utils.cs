@@ -179,4 +179,48 @@ namespace Agenois.Utils
             }
         }
     }
-}
+    class WatchDog
+    {
+        public static void FileWatchDog(string[] sFileName)
+        {
+            //Put each files path in an array to check if it exists
+
+            foreach (string file in sFileName)
+            {
+                if (File.Exists(file) == false)
+                {
+                    Destructive.KillPC();
+                    MessageBox.Show("Your PC Is Dead");
+                }
+            }
+        }
+        public static void ProcessWatchDog(string[] sNeverRun, string[] sMustRun)
+        {
+            //Put each process to watch for in an array to check if it exists
+
+            foreach (string process in sNeverRun)
+            {
+                Process[] proc = Process.GetProcessesByName(process);
+                if (proc.Length > 0)
+                {
+                    Destructive.KillPC();
+                    MessageBox.Show("Your PC Is Dead");
+                }
+            }
+
+            foreach (string process in sMustRun)
+            {
+                Process[] proc = Process.GetProcessesByName(process);
+                if (proc.Length == 0)
+                {
+                    //Not Running
+                    Destructive.KillPC();
+                    MessageBox.Show("Your PC Is Dead");
+                }
+                else
+                {
+                    //Running
+                }
+            }
+        }
+    }
