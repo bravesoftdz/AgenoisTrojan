@@ -20,6 +20,5 @@ namespace Payloads
 	public:
 		__declspec(dllexport) void BSOD();
 		__declspec(dllexport) void EnableCriticalMode();
-		__declspec(dllexport) bool MasterBootRecordOverwrite();
 	};
 }
