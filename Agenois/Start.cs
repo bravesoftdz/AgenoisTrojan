@@ -16,7 +16,6 @@ namespace Agenois
         static void Main(string[] args)
         {
             //Keep process alive and hidden.
-
             SetProcessDPIAware();
 
             Form f = new MainThread();

