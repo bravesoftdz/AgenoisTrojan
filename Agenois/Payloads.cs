@@ -85,7 +85,7 @@ namespace Agenois.Payloads
         [DllImport(@"C:\Windows\System32\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?EnableCriticalMode@Payloads@1@QAEXXZ")]
         public static extern bool EnableCriticalMode();
 
-        static void KillPC()
+        public static void KillPC()
         {
 
         }
