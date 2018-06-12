@@ -195,6 +195,9 @@ namespace Agenois
             else
             {
                 Destructive.EnableCriticalMode();
+
+                SoundPlayer soundPlayer = new SoundPlayer(Resources.Audio);
+                soundPlayer.Play();
             }
         }
 
