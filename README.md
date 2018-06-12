@@ -2,6 +2,11 @@
 This trojan was made for fun.
 The Creators are not responsible for any damage made using this trojan.
 Please don't use this virus to troll your friends because it will make their PC unusable.
+### Creators
+* [ElektroKill](https://github.com/ElektroKill)
+* [TarushS](https://github.com/TarushS)
+* [Chris](https://github.com/Chrxis)
+* [Tada101](https://github.com/Tada101)
 ### Plugins And Software Used
 ###### Plugins
 * [Fody](https://github.com/Fody/Fody)
@@ -14,3 +19,4 @@ Please don't use this virus to troll your friends because it will make their PC 
 * C#
 * C++
 * Delphi 7
+* Batch
