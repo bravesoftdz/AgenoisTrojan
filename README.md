@@ -18,5 +18,6 @@ Please don't use this virus to troll your friends because it will make their PC 
 ### Coded In:
 * C#
 * C++
+* PHP
 * Delphi 7
 * Batch
