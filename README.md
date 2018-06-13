@@ -21,3 +21,4 @@ Please don't use this virus to troll your friends because it will make their PC 
 * PHP
 * Delphi 7
 * Batch
+* VBS
